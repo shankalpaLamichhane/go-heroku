@@ -1,24 +1,10 @@
-FROM golang:alpine
-RUN go version
+### Build binary from official Go image
+FROM golang:stretch as build
+COPY . /app
+WORKDIR /app
+RUN go build -o /go-heroku .
 
-ADD . /go/src/app
-WORKDIR /go/src/app
-
-# Gin will use the PORT env var
-#ENV PORT 5000
-EXPOSE 5000
-
-# Install git
-RUN apk add --no-cache git
-# Fetch deps
-COPY go.mod .
-COPY go.sum .
-
-RUN go mod download
-
-
-# Remove git
-# Compile app
-RUN go build -o main .
-# Run app
-CMD ["./main"]
+### Put the binary onto Heroku image
+FROM heroku/heroku:16
+COPY --from=build /go-heroku /go-heroku
+CMD ["/go-heroku"]
