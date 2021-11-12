@@ -6,6 +6,7 @@ import (
 
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
+	"net/http"
 
 	"log"
 
@@ -30,6 +31,6 @@ func main() {
 			"tasks": tasks,
 		})
 	})
-	r.Run(":8080")
+	http.ListenAndServe(":5000",r)
 
 }
