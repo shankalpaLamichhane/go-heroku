@@ -2,7 +2,7 @@ package main
 
 import (
 	"go-heroku/models"
-	// "os"
+	"os"
 
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
@@ -16,7 +16,7 @@ import (
 func main() {
 	r := gin.Default()
 	version := r.Group("/v1")
-	dbUrl := "postgres://rvgxldtdvoulcj:9fc2b3c5a5c47d4380b970789d13bdbd2af85333786669302b587687e0c8f87a@ec2-52-204-72-14.compute-1.amazonaws.com:5432/d27iah2ij2g50j"
+	dbUrl := os.Getenv("DATABASE_URL")
 	log.Printf("DB [%s]", dbUrl)
 
 	db, err := gorm.Open(postgres.Open(dbUrl), &gorm.Config{})

@@ -35,5 +35,5 @@ jobs:
           heroku_app_name: "go-heroku-007"
           heroku_email: "primrose83.5@gmail.com"
         env:
-          HD_HEROKU_POSTGRESQL_ORANGE_URL: ${{secrets.HEROKU_POSTGRESQL_ORANGE_URL}}
+          HD_DATABASE_URL: ${{secrets.DATABASE_URL}}
     
