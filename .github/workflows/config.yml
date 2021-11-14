@@ -34,4 +34,6 @@ jobs:
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
           heroku_app_name: "go-heroku-007"
           heroku_email: "primrose83.5@gmail.com"
+        env:
+          HD_DATABASE_URL: ${{secrets.FIREBASE_API_KEY}}
     
