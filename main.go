@@ -16,7 +16,7 @@ import (
 func main() {
 	r := gin.Default()
 	version := r.Group("/v1")
-	dbUrl := os.Getenv("DATABASE_URL") + " sslmode=require"
+	dbUrl := os.Getenv("HEROKU_POSTGRESQL_ORANGE_URL") + " sslmode=require"
 	log.Printf("DB [%s]", dbUrl)
 
 	db, err := gorm.Open(postgres.Open(dbUrl), &gorm.Config{})
