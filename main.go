@@ -31,7 +31,6 @@ func main() {
 			"tasks": tasks,
 		})
 	})
-	r.Run(":5000")
 	http.ListenAndServe(":5001",r)
 
 }
